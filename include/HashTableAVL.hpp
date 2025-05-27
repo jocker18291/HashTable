@@ -13,6 +13,9 @@ private:
         AVLNode(int k, int v) 
             : key(k), value(v), left(nullptr), right(nullptr), height(1) {}
     };
+
+    AVLNode** table;
+    int size;
 public:
     HashAVL();
     ~HashAVL();
