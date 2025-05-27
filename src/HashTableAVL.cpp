@@ -129,4 +129,27 @@ HashAVL::AVLNode* HashAVL::removeNode(AVLNode* node, int key) {
             node->right = removeNode(node->right, temp->key);
         }
     }
+
+    node->height = 1 + max(getHeight(node->left), getHeight(node->right));
+
+    int balance = getBalance(node);
+
+    if(balance > 1 && getBalance(node->left) >= 0) {
+        return rotateRight(node);
+    }
+    
+    if (balance > 1 && getBalance(node->left) < 0) {
+        node->left = rotateLeft(node->left);
+        return rotateRight(node);
+    }
+
+    if (balance < -1 && getBalance(node->right) <= 0)
+        return rotateLeft(node);
+
+    if (balance < -1 && getBalance(node->right) > 0) {
+        node->right = rotateRight(node->right);
+        return rotateLeft(node);
+    }
+
+    return node;
 }
