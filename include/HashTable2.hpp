@@ -11,10 +11,14 @@ private:
 		Node* next;
 	};
 
+	Node** table;
+	int size;
+
 public:
 	HashTable2(int table_size);
 	~HashTable2();
 	void insert(int key, int value);
 	void remove(int key);
+	int hash_function(int key);
 };
 #endif
