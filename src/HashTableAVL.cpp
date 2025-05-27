@@ -100,3 +100,8 @@ HashAVL::AVLNode* HashAVL::insertNode(AVLNode* node, int key, int value) {
 
     return node;
 }
+
+void HashAVL::insert(int key, int value) {
+    int index = hashFunction(key);
+    table[index] = insertNode(table[index], key, value);
+}
