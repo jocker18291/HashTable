@@ -28,3 +28,7 @@ int HashAVL::hashFunction(int key) {
 
     return key % size;
 }
+
+int HashAVL::getHeight(AVLNode* node) {
+    return node ? node->height : 0;
+}
