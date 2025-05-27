@@ -15,6 +15,12 @@ private:
     };
 
     void destroyTree(AVLNode* node);
+    AVLNode* insertNode(AVLNode* node, int key, int value);
+    int getHeight(AVLNode* node);
+    int getBalance(AVLNode* node);
+    AVLNode* rotateLeft(AVLNode* node);
+    AVLNode* rotateRight(AVLNode* node);
+    int max(int a, int b);
 
     AVLNode** table;
     int size;
