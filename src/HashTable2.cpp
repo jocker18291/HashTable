@@ -11,7 +11,7 @@ HashTable2::HashTable2(int table_size)	// constructor
 	}
 }
 
-HashTable2::~HashTable2()				// desctructor
+HashTable2::~HashTable2()				// destructor
 {
 	for (int i = 0; i < size; i++)
 	{
