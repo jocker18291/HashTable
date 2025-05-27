@@ -66,3 +66,16 @@ HashAVL::AVLNode* HashAVL::rotateRight(AVLNode* y) {
 
     return x;
 }
+
+HashAVL::AVLNode* HashAVL::insertNode(AVLNode* node, int key, int value) {
+    if(!node) return new AVLNode(key, value);
+
+    if(key < node->key) {
+        node->left = insertNode(node->left, key, value);
+    } else if (key > node->key)  {
+        node->right = insertNode(node->right, key, value);
+    } else {
+        node->value = value;
+        return node;
+    }
+}
