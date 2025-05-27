@@ -32,3 +32,7 @@ int HashAVL::hashFunction(int key) {
 int HashAVL::getHeight(AVLNode* node) {
     return node ? node->height : 0;
 }
+
+int HashAVL::max(int a, int b) {
+    return (a > b) ? a : b;
+}
