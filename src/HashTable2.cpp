@@ -1,4 +1,4 @@
-#include "HashTable2.hpp"
+#include "../include/HashTable2.hpp"
 #include <iostream>
 
 HashTable2::HashTable2(int table_size)	// constructor
