@@ -9,3 +9,16 @@ HashAVL::HashAVL() {
         table[i] = nullptr;
     }
 }
+
+void HashAVL::destroyTree(AVLNode* node) {
+    destroyTree(node->left);
+    destroyTree(node->right);
+    delete node;
+}
+
+HashAVL::~HashAVL() {
+    for(int i = 0; i < size; i++) {
+        destroyTree(table[i]);
+    }
+    delete[] table;
+}
