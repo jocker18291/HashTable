@@ -123,6 +123,22 @@ void menuHashAVL()
     }
 }
 
+std::vector<std::pair<int, int>> generateRandom(int n) {
+    std::vector<std::pair<int, int>> arr;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> key((-1 * n * 5), (n * 5));
+    std::uniform_int_distribution<> value(-500, 500);
+
+    for (int i = 0; i < n; i++) {
+        arr.push_back({ key(gen), value(gen) });
+    }
+
+    return arr;
+}
+
+int TRIALS = 100;
+
 void testTableInsert()
 {
 
