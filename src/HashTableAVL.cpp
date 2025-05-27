@@ -137,7 +137,7 @@ HashAVL::AVLNode* HashAVL::removeNode(AVLNode* node, int key) {
     if(balance > 1 && getBalance(node->left) >= 0) {
         return rotateRight(node);
     }
-    
+
     if (balance > 1 && getBalance(node->left) < 0) {
         node->left = rotateLeft(node->left);
         return rotateRight(node);
@@ -152,4 +152,9 @@ HashAVL::AVLNode* HashAVL::removeNode(AVLNode* node, int key) {
     }
 
     return node;
+}
+
+void HashAVL::remove(int key) {
+    int index = hashFunction(key);
+    table[index] = removeNode(table[index], key);
 }
