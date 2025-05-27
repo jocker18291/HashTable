@@ -36,3 +36,7 @@ int HashAVL::getHeight(AVLNode* node) {
 int HashAVL::max(int a, int b) {
     return (a > b) ? a : b;
 }
+
+int HashAVL::getBalance(AVLNode* node) {
+    return node ? getHeight(node->left) - getHeight(node->right) : 0;
+}
