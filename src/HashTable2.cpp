@@ -78,3 +78,18 @@ void HashTable2::remove(int key)
 		current = current->next;
 	}
 }
+
+void HashTable2::print()
+{
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << "[" << i << "]: ";
+		Node* current = table[i];
+		while (current != nullptr)
+		{
+			std::cout << "(" << current->key << ", " << current->value << ") -> ";
+			current = current->next;
+		}
+		std::cout << "nullptr\n";
+	}
+}

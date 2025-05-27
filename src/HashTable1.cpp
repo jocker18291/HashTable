@@ -78,3 +78,23 @@ void HashTable1::remove(int key)
 		deleted[index] = true;
 	}
 }
+
+void HashTable1::print()
+{
+	for (int i = 0; i < size; ++i)
+	{
+		std::cout << "[" << i << "]: ";
+		if (occupied[i])
+		{
+			std::cout << "(" << table[i].key << ", " << table[i].value << ")\n";
+		}
+		else if (deleted[i])
+		{
+			std::cout << "DELETED\n";
+		}
+		else
+		{
+			std::cout << "EMPTY\n";
+		}
+	}
+}
