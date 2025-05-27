@@ -85,6 +85,40 @@ void menuHashTable2()
     }
 }
 
+void menuHashAVL()
+{
+    HashAVL avl;
+    int choice, key, value;
+
+    while (true)
+    {
+        std::cout << "\n--- Hash Table - AVL ---\n";
+        std::cout << "1. Insert\n";
+        std::cout << "2. Remove\n";
+        std::cout << "3. Exit\n";
+        std::cout << "Your choice: ";
+        std::cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            std::cout << "Enter key and value: ";
+            std::cin >> key >> value;
+            avl.insert(key, value);
+            break;
+        case 2:
+            std::cout << "Enter key to remove: ";
+            std::cin >> key;
+            avl.remove(key);
+            break;
+        case 3:
+            return;
+        default:
+            std::cout << "Invalid option\n";
+        }
+    }
+}
+
 void testTableInsert()
 {
 
@@ -99,6 +133,7 @@ int main()
 {
     int choice = 0;
 
+    std::cout << "0. Use Hash Table - AVL\n";
     std::cout << "1. Use Hash Table - Open Addressing\n";
     std::cout << "2. Use Hash Table - Seperate Chaining\n";
     std::cout << "3. Test Insert on Both Tables\n";
@@ -108,6 +143,9 @@ int main()
 
     switch (choice)
     {
+    case 0:
+        menuHashAVL();
+        break;
     case 1:
         menuHashTable1();
         break;
