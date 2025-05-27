@@ -15,6 +15,7 @@ public:
     ~HashAVL();
     void insert(int key, int value);
     void remove(int key);
+    int hashFunction(int key);
 };
 
 #endif
