@@ -22,3 +22,9 @@ HashAVL::~HashAVL() {
     }
     delete[] table;
 }
+
+int HashAVL::hashFunction(int key) {
+    if(key < 0) key = -key;
+
+    return key % size;
+}
