@@ -105,3 +105,28 @@ void HashAVL::insert(int key, int value) {
     int index = hashFunction(key);
     table[index] = insertNode(table[index], key, value);
 }
+
+HashAVL::AVLNode* HashAVL::removeNode(AVLNode* node, int key) {
+    if (!node) return nullptr;
+
+    if(key < node->key) {
+        node->left = removeNode(node->left, key);
+    } else if (key > node->key) {
+        node->right = removeNode(node->right, key);
+    }
+    else {
+        if(!node->left || !node->right) {
+            AVLNode* temp = node->left ? node->left : node->right;
+            delete node;
+            return temp;
+        } else {
+            AVLNode* temp = node->right;
+            while(temp->left)
+                temp=temp->left;
+            
+            node->key = temp->key;
+            node->value = temp->value;
+            node->right = removeNode(node->right, temp->key);
+        }
+    }
+}
