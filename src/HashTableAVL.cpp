@@ -80,4 +80,23 @@ HashAVL::AVLNode* HashAVL::insertNode(AVLNode* node, int key, int value) {
     }
 
     node->height = 1 + max(getHeight(node->left), getHeight(node->right));
+    int balance = getBalance(node);
+
+    if(balance > 1 && key < node->left->key)
+        return rotateRight(node);
+    
+    if(balance < -1 && key > node->right->key)
+        return rotateLeft(node);
+
+    if(balance > 1 && key > node->right->key) {
+        node->left = rotateLeft(node->left);
+        return rotateRight(node);
+    }
+
+    if(balance < -1 && key < node->right->key) {
+        node->right = rotateRight(node);
+        return rotateLeft(node);
+    }
+
+    return node;
 }
