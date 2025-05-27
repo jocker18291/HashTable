@@ -141,7 +141,50 @@ int TRIALS = 100;
 
 void testTableInsert()
 {
+    std::string fileName;
+    HashTable1 ht1(100003);
+    HashTable2 ht2(100003);
+    HashAVL avl;
 
+    std::cout << "\n --- Testing Insertion ---\n\n";
+    std::cout << "Enter the file name to save results: ";
+    std::cin >> fileName;
+    std::ofstream MyFile(fileName);
+
+    MyFile << "Size,HT1Time,HT2Time,AVLTime" << std::endl;
+
+    std::vector<int> size = {1000, 10000, 50000, 100000, 250000, 500000, 750000, 1000000};
+
+    for (int i = 0; i < 8; i++) {
+        double totalH1 = 0.0, totalH2 = 0.0, totalAVL = 0.0;
+        for (int j = 0; j < TRIALS; j++) {
+            auto arr = generateRandom(size[i]);
+            auto relem = generateRandom(1);
+
+            for (auto element : arr) {
+                ht1.insert(element.first, element.second);
+                ht2.insert(element.first, element.second);
+                avl.insert(element.first, element.second);
+            }
+
+            auto start = std::chrono::high_resolution_clock::now();
+            ht1.insert(relem[0].first, relem[0].second);
+            auto end = std::chrono::high_resolution_clock::now();
+            totalH1 += std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+
+            auto start2 = std::chrono::high_resolution_clock::now();
+            ht2.insert(relem[0].first, relem[0].second);
+            auto end2 = std::chrono::high_resolution_clock::now();
+            totalH2 += std::chrono::duration_cast<std::chrono::nanoseconds>(end2 - start2).count();
+
+            auto start3 = std::chrono::high_resolution_clock::now();
+            avl.insert(relem[0].first, relem[0].second);
+            auto end3 = std::chrono::high_resolution_clock::now();
+            totalAVL += std::chrono::duration_cast<std::chrono::nanoseconds>(end3 - start3).count();
+        }
+        MyFile << size[i] << "," << totalH1 / TRIALS << "," << totalH2 / TRIALS << "," << totalAVL / TRIALS << std::endl;
+    }
+    MyFile.close();
 }
 
 void testTableRemove()
