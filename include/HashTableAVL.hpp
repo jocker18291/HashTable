@@ -9,6 +9,9 @@ private:
         AVLNode* left;
         AVLNode* right;
         int height;
+
+        AVLNode(int k, int v) 
+            : key(k), value(v), left(nullptr), right(nullptr), height(1) {}
     };
 public:
     HashAVL();
