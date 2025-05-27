@@ -16,6 +16,7 @@ private:
 
     void destroyTree(AVLNode* node);
     AVLNode* insertNode(AVLNode* node, int key, int value);
+    AVLNode* removeNode(AVLNode* node, int key);
     int getHeight(AVLNode* node);
     int getBalance(AVLNode* node);
     AVLNode* rotateLeft(AVLNode* node);
