@@ -3,7 +3,13 @@
 
 class HashAVL {
 private:
-
+    struct AVLNode {
+        int key;
+        int value;
+        AVLNode* left;
+        AVLNode* right;
+        int height;
+    };
 public:
     HashAVL();
     ~HashAVL();
