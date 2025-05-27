@@ -14,6 +14,8 @@ private:
             : key(k), value(v), left(nullptr), right(nullptr), height(1) {}
     };
 
+    void destroyTree(AVLNode* node);
+
     AVLNode** table;
     int size;
 public:
