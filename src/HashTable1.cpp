@@ -1,4 +1,4 @@
-#include "../include/HashTable1.hpp"
+#include "../include/HashTable2.hpp"
 #include <iostream>
 
 HashTable1::HashTable1(int table_size)		// constructor
@@ -76,5 +76,25 @@ void HashTable1::remove(int key)
 	{
 		occupied[index] = false;
 		deleted[index] = true;
+	}
+}
+
+void HashTable1::print()
+{
+	for (int i = 0; i < size; ++i)
+	{
+		std::cout << "[" << i << "]: ";
+		if (occupied[i])
+		{
+			std::cout << "(" << table[i].key << ", " << table[i].value << ")\n";
+		}
+		else if (deleted[i])
+		{
+			std::cout << "DELETED\n";
+		}
+		else
+		{
+			std::cout << "EMPTY\n";
+		}
 	}
 }

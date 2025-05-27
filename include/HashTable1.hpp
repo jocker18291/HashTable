@@ -22,6 +22,7 @@ public:
 	void remove(int key);
 	int hash_function(int key);
 	int search(int key, bool& found);
+	void print();
 };
 
 #endif

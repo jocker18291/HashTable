@@ -20,5 +20,6 @@ public:
 	void insert(int key, int value);
 	void remove(int key);
 	int hash_function(int key);
+	void print();
 };
 #endif

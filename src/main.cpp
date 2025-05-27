@@ -16,7 +16,8 @@ void menuHashTable1()
         std::cout << "\n--- Hash Table - Open Addressing ---\n";
         std::cout << "1. Insert\n";
         std::cout << "2. Remove\n";
-        std::cout << "3. Exit\n\n";
+        std::cout << "3. Print\n";
+        std::cout << "4. Exit\n\n";
         std::cout << "Your choice: ";
         std::cin >> choice;
 
@@ -33,6 +34,9 @@ void menuHashTable1()
             ht1.remove(key);
             break;
         case 3:
+            ht1.print();
+            break;
+        case 4:
             return;
         default:
             std::cout << "Invalid option\n";
@@ -53,7 +57,8 @@ void menuHashTable2()
         std::cout << "\n--- Hash Table - Seperate Chaining ---\n";
         std::cout << "1. Insert\n";
         std::cout << "2. Remove\n";
-        std::cout << "3. Exit\n\n";
+        std::cout << "3. Print\n";
+        std::cout << "4. Exit\n\n";
         std::cout << "Your choice: ";
         std::cin >> choice;
 
@@ -70,6 +75,9 @@ void menuHashTable2()
             ht2.remove(key);
             break;
         case 3:
+            ht2.print();
+            break;
+        case 4:
             return;
         default:
             std::cout << "Invalid option\n";
