@@ -78,4 +78,6 @@ HashAVL::AVLNode* HashAVL::insertNode(AVLNode* node, int key, int value) {
         node->value = value;
         return node;
     }
+
+    node->height = 1 + max(getHeight(node->left), getHeight(node->right));
 }
