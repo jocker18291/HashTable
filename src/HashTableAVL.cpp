@@ -11,6 +11,7 @@ HashAVL::HashAVL() {
 }
 
 void HashAVL::destroyTree(AVLNode* node) {
+    if(node == nullptr) return;
     destroyTree(node->left);
     destroyTree(node->right);
     delete node;
