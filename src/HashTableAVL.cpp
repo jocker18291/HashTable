@@ -53,3 +53,16 @@ HashAVL::AVLNode* HashAVL::rotateLeft(AVLNode* x) {
 
     return y;
 }
+
+HashAVL::AVLNode* HashAVL::rotateRight(AVLNode* y) {
+    AVLNode* x = y->left;
+    AVLNode* T2 = x->right;
+
+    x->right = y;
+    y->left = T2;
+
+    x->height = max(getHeight(x->left), getHeight(x->right)) + 1;
+    y->height = max(getHeight(y->left), getHeight(y->right)) + 1;
+
+    return x;
+}
