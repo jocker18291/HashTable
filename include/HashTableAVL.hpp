@@ -26,7 +26,7 @@ private:
     AVLNode** table;
     int size;
 public:
-    HashAVL();
+    HashAVL(int size);
     ~HashAVL();
     void insert(int key, int value);
     void remove(int key);

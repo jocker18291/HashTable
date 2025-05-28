@@ -91,7 +91,7 @@ void menuHashTable2()
 
 void menuHashAVL()
 {
-    HashAVL avl;
+    HashAVL avl(100003);
     int choice, key, value;
 
     while (true)
@@ -127,7 +127,7 @@ std::vector<std::pair<int, int>> generateRandom(int n) {
     std::vector<std::pair<int, int>> arr;
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> key((-1 * n * 5), (n * 5));
+    std::uniform_int_distribution<> key(n, (n * 5));
     std::uniform_int_distribution<> value(-500, 500);
 
     for (int i = 0; i < n; i++) {
@@ -142,9 +142,6 @@ int TRIALS = 100;
 void testTableInsert()
 {
     std::string fileName;
-    HashTable1 ht1(100003);
-    HashTable2 ht2(100003);
-    HashAVL avl;
 
     std::cout << "\n --- Testing Insertion ---\n\n";
     std::cout << "Enter the file name to save results: ";
@@ -158,6 +155,10 @@ void testTableInsert()
     for (int i = 0; i < 8; i++) {
         double totalH1 = 0.0, totalH2 = 0.0, totalAVL = 0.0;
         for (int j = 0; j < TRIALS; j++) {
+            HashTable1 ht1(size[i] * 2);
+            HashTable2 ht2(size[i] * 2);
+            HashAVL avl(size[i] * 2);
+
             auto arr = generateRandom(size[i]);
             auto relem = generateRandom(1);
 
@@ -190,9 +191,6 @@ void testTableInsert()
 void testTableRemove()
 {
     std::string fileName;
-    HashTable1 ht1(100003);
-    HashTable2 ht2(100003);
-    HashAVL avl;
 
     std::cout << "\n --- Testing Insertion ---\n\n";
     std::cout << "Enter the file name to save results: ";
@@ -206,6 +204,10 @@ void testTableRemove()
     for (int i = 0; i < 8; i++) {
         double totalH1 = 0.0, totalH2 = 0.0, totalAVL = 0.0;
         for (int j = 0; j < TRIALS; j++) {
+            HashTable1 ht1(size[i] * 2);
+            HashTable2 ht2(size[i] * 2);
+            HashAVL avl(size[i] * 2);
+
             auto arr = generateRandom(size[i]);
             auto index = arr[rand() % arr.size()];
 

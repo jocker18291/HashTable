@@ -2,8 +2,8 @@
 #include <iostream>
 #include <cstdlib>
 
-HashAVL::HashAVL() {
-    size = 100003;
+HashAVL::HashAVL(int table_size) {
+    size = table_size;
     table = new AVLNode*[size];
     for(int i = 0; i < size; i++) {
         table[i] = nullptr;
