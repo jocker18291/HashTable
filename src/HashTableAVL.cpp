@@ -103,7 +103,7 @@ HashAVL::AVLNode* HashAVL::insertNode(AVLNode* node, int key, int value) {
     }
 
     if(balance < -1 && node->right && key < node->right->key) {
-        node->right = rotateRight(node);
+        node->right = rotateRight(node->right);
         return rotateLeft(node);
     }
 
