@@ -43,6 +43,10 @@ int HashAVL::getBalance(AVLNode* node) {
 }
 
 HashAVL::AVLNode* HashAVL::rotateLeft(AVLNode* x) {
+    if(!x || !x->right) {
+        return x;
+    }
+
     AVLNode* y = x->right;
     AVLNode* T2 = y->left;
 
@@ -56,6 +60,10 @@ HashAVL::AVLNode* HashAVL::rotateLeft(AVLNode* x) {
 }
 
 HashAVL::AVLNode* HashAVL::rotateRight(AVLNode* y) {
+    if (!y || !y->left) {
+        return y;
+    }
+
     AVLNode* x = y->left;
     AVLNode* T2 = x->right;
 
@@ -83,18 +91,18 @@ HashAVL::AVLNode* HashAVL::insertNode(AVLNode* node, int key, int value) {
     node->height = 1 + max(getHeight(node->left), getHeight(node->right));
     int balance = getBalance(node);
 
-    if(balance > 1 && key < node->left->key)
+    if(balance > 1 && node->left && key < node->left->key)
         return rotateRight(node);
     
-    if(balance < -1 && key > node->right->key)
+    if(balance < -1 && node->right && key > node->right->key)
         return rotateLeft(node);
 
-    if(balance > 1 && key > node->left->key) {
+    if(balance > 1 && node->left && key > node->left->key) {
         node->left = rotateLeft(node->left);
         return rotateRight(node);
     }
 
-    if(balance < -1 && key < node->right->key) {
+    if(balance < -1 && node->right && key < node->right->key) {
         node->right = rotateRight(node);
         return rotateLeft(node);
     }
